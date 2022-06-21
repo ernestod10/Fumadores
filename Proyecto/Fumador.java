@@ -10,19 +10,20 @@ public class Fumador extends Conexion {
 
     public static void main(String[] args) throws IOException
     {
-        Fumador cli = new Fumador(1,"ernesto"); //Se crea el cliente
-
-        System.out.println("Iniciando cliente\n");
-        cli.startClient(); //Se inicia el cliente
+        Fumador fu = new Fumador(1,"ernesto"); //Se crea el Fumador
+        
+        fu.enviarMensaje(1); //Se inicia el cliente
     }
 
     public Fumador(int recurso, String nombre ) throws IOException{
     super("Fumador");
     this.setElemento(recurso);
-    this.setNombre(nombre);} 
+    this.setNombre(nombre);}
+        //metodo que empieza la comunicacion y se conecta a una mesa al azar a buscar insumos
+        public void buscarInsumos(){
 
-
-
+        }
+//
 
         /* El proceso utilizara este metodo para determinar si los materiales de la mesa le sirven para empezar a fumar.
        return si puede o no fumar  */
@@ -56,21 +57,15 @@ public class Fumador extends Conexion {
            System.out.println("Termina de fumar...");
        }
 
-       public void startClient() //Método para iniciar el cliente
+       public void enviarMensaje(int mensaje) //Método para iniciar el cliente
        {
            try
            {
-               //Flujo de datos hacia el servidor
-               salidaServidor = new DataOutputStream(cs.getOutputStream());
-
-               //Se enviarán dos mensajes
-               for (int i = 0; i < 2; i++)
-               {
-                   //Se escribe en el servidor usando su flujo de datos
-                   salidaServidor.writeUTF("Este es el mensaje número " + (i+1) + "\n");
-               }
-
-               cs.close();//Fin de la conexión
+            //Flujo de datos hacia el servidor
+            salidaServidor = new DataOutputStream(cs.getOutputStream());
+            //Se Manda el mensaje
+            salidaServidor.writeUTF(Integer.toString(mensaje));
+            cs.close();//Fin de la conexión
 
            }
            catch (Exception e)
