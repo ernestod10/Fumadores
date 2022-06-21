@@ -8,7 +8,15 @@ public class Fumador extends Conexion {
     private String nombre;
     private boolean activo = false;
 
-    public Fumador(String nombre, int recurso) throws IOException{
+    public static void main(String[] args) throws IOException
+    {
+        Fumador cli = new Fumador(1,"ernesto"); //Se crea el cliente
+
+        System.out.println("Iniciando cliente\n");
+        cli.startClient(); //Se inicia el cliente
+    }
+
+    public Fumador(int recurso, String nombre ) throws IOException{
     super("Fumador");
     this.setElemento(recurso);
     this.setNombre(nombre);} 
@@ -46,6 +54,29 @@ public class Fumador extends Conexion {
            System.out.println("Empezando a fumar....");
            Thread.sleep((int) 2000);
            System.out.println("Termina de fumar...");
+       }
+
+       public void startClient() //Método para iniciar el cliente
+       {
+           try
+           {
+               //Flujo de datos hacia el servidor
+               salidaServidor = new DataOutputStream(cs.getOutputStream());
+
+               //Se enviarán dos mensajes
+               for (int i = 0; i < 2; i++)
+               {
+                   //Se escribe en el servidor usando su flujo de datos
+                   salidaServidor.writeUTF("Este es el mensaje número " + (i+1) + "\n");
+               }
+
+               cs.close();//Fin de la conexión
+
+           }
+           catch (Exception e)
+           {
+               System.out.println(e.getMessage());
+           }
        }
    //constructores y metodos
    public int getElemento(){
