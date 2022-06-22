@@ -1,4 +1,4 @@
-package Proyecto;
+package sockets.conexion;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,10 +7,9 @@ import java.net.Socket;
 
 public class Conexion
 {
-    private final int PUERTO = 1234; //Puerto para la conexión
+    private final int PUERTO = 1000; //Puerto para la conexión
     private final String HOST = "localhost"; //Host para la conexión
-    protected String mensajeaMesa; //Mensajes entrantes (recibidos) en el servidor
-    protected String mensajeaFumador; //mensaje saliente (enviado) por el servidor
+    protected String mensajeServidor; //Mensajes entrantes (recibidos) en el servidor
     protected ServerSocket ss; //Socket del servidor
     protected Socket cs; //Socket del cliente
     protected DataOutputStream salidaServidor, salidaCliente; //Flujo de datos de salida
