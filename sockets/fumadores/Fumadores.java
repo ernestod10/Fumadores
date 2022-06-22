@@ -1,12 +1,12 @@
-package sockets.cliente;
+package sockets.fumadores;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import sockets.conexion.Conexion;
 
-public class Cliente extends Conexion
+public class Fumadores extends Conexion
 {
-    public Cliente() throws IOException{super("cliente");} //Se usa el constructor para cliente de Conexion
+    public Fumadores() throws IOException{super("Fumadores");} //Se usa el constructor para cliente de Conexion
 
     public void startClient() //Método para iniciar el cliente
     {

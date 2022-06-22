@@ -1,4 +1,4 @@
-package sockets.servidor;
+package sockets.mesas;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import sockets.conexion.Conexion;
 
-public class Servidor extends Conexion //Se hereda de conexión para hacer uso de los sockets y demás
+public class Mesas extends Conexion //Se hereda de conexión para hacer uso de los sockets y demás
 {
-    public Servidor() throws IOException{super("servidor");} //Se usa el constructor para servidor de Conexion
+    public Mesas() throws IOException{super("servidor");} //Se usa el constructor para servidor de Conexion
 
     public void startServer()//Método para iniciar el servidor
     {
